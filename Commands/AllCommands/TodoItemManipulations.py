@@ -8,7 +8,7 @@ class CreateTodoItem:
   new_item = None
 
   def execute(self) -> None:
-    new_task_name = input("Enter task name: ")
+    new_task_name = input("\nEnter task name: ")
     new_task_description = input("Enter task description: ")
     
     if new_task_name in self.todo_list.todo_list.keys():

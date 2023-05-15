@@ -19,3 +19,6 @@ class TodoList:
 
   def getTodoItem(self, item_name: str) -> TodoItem:
     return self.todo_list[item_name]
+  
+  def loadTodoList(self, todo_list: dict) -> None:
+    self.todo_list = todo_list

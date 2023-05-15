@@ -10,19 +10,19 @@ class TodoItem:
   def __str__(self) -> str:
     return f"Task: {self.name} | Description: {self.description} | Finished: {self.status}"
   
-  def setName(self, name: str):
+  def setName(self, name: str) -> None:
     self.name = str(name)
   
-  def setDescription(self, description: str):
+  def setDescription(self, description: str) -> None:
     self.description = str(description)
 
-  def toggleStatus(self):
+  def toggleStatus(self) -> None:
     self.status = not self.status
 
-  def setStatusFinished(self):
+  def setStatusFinished(self) -> None:
     self.status = True
 
-  def setStatusUnfinished(self):
+  def setStatusUnfinished(self) -> None:
     self.status = False
 
   def getName(self) -> str:

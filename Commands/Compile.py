@@ -10,6 +10,7 @@ from Commands.AllCommands.MenuNavigations import *
 from Commands.AllCommands.TodoItemManipulations import *
 from Commands.AllCommands.Show import *
 from Commands.AllCommands.UserCommandManipulations import *
+from Commands.AllCommands.Database import *
 
 @dataclass
 class Compile:
@@ -41,6 +42,7 @@ class Compile:
             self.ru_controller.redo()
             self.controller.execute(Compile(self.user_command, self.todo_list, self.controller, self.ru_controller))
           case "5":
+            self.controller.execute(SaveData(self.todo_list))
             quit()
     
     elif self.user_command.menu_status == 2:
