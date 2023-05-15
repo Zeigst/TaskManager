@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Classes.TodoList import *
+from Classes.todo_list import *
 import pickle
 import os
 import zipfile
@@ -10,7 +10,7 @@ class SaveData:
 
   def execute(self):
     with open("todo_list.pkl", "wb") as f:
-      pickle.dump(self.todo_list.todo_list, f, pickle.HIGHEST_PROTOCOL)
+      pickle.dump(self.todo_list.get_data(), f, pickle.HIGHEST_PROTOCOL)
     with zipfile.ZipFile('database.dat', 'w', compression=zipfile.ZIP_DEFLATED) as zip:        
       zip.write('todo_list.pkl')
     os.remove("todo_list.pkl")
@@ -27,4 +27,4 @@ class LoadData:
       if(os.path.exists("todo_list.pkl")):
         with open("todo_list.pkl", "rb") as f:
           saved_list = pickle.load(f)
-          self.todo_list.loadTodoList(saved_list)
+          self.todo_list.set_data(saved_list)

@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from Commands.RUCommandInterface import *
+from Commands.ru_command_interface import *
 
 @dataclass
 class RUCommandController:

@@ -1,8 +1,8 @@
-from Classes.TodoItem import *
-from Classes.TodoList import *
-from Commands.CommandController import *
-from Commands.RUCommandController import *
-from Commands.Compile import *
+from Classes.todo_item import *
+from Classes.todo_list import *
+from Commands.command_controller import *
+from Commands.ru_command_controller import *
+from Commands.compile import *
 
 def main():
   todo_list = TodoList()

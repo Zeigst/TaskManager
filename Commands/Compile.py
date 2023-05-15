@@ -1,16 +1,16 @@
 from dataclasses import dataclass
 import os
 
-from Classes.TodoList import TodoList
-from Classes.UserCommand import UserCommand
-from Commands.CommandController import *
-from Commands.RUCommandController import *
+from Classes.todo_list import TodoList
+from Classes.user_command import UserCommand
+from Commands.command_controller import *
+from Commands.ru_command_controller import *
 
-from Commands.AllCommands.MenuNavigations import *
-from Commands.AllCommands.TodoItemManipulations import *
-from Commands.AllCommands.Show import *
-from Commands.AllCommands.UserCommandManipulations import *
-from Commands.AllCommands.Database import *
+from Commands.AllCommands.menu_navigations import *
+from Commands.AllCommands.item_manipulations import *
+from Commands.AllCommands.show import *
+from Commands.AllCommands.user_command_manipulations import *
+from Commands.AllCommands.database_manipulations import *
 
 @dataclass
 class Compile:
@@ -33,7 +33,7 @@ class Compile:
             self.ru_controller.execute(CreateTodoItem(self.todo_list))
             self.controller.execute(Compile(self.user_command, self.todo_list, self.controller, self.ru_controller))
           case "2":
-            self.controller.execute(ToItemMenuMiddle(self.user_command))
+            self.controller.execute(ToItemSelectMenu(self.user_command))
             self.controller.execute(Compile(self.user_command, self.todo_list, self.controller, self.ru_controller))
           case "3":
             self.ru_controller.undo()
@@ -49,7 +49,7 @@ class Compile:
       self.controller.execute(ShowTodoList(self.todo_list))
       self.controller.execute(RequestUserCommand(self.user_command))
       self.controller.execute(SetUserChoice(self.user_command, self.user_command.user_input))
-      if not self.user_command.user_input in self.todo_list.todo_list.keys():
+      if not self.user_command.user_input in self.todo_list.get_data().keys():
         print("Invalid Input")
         self.controller.execute(ResetUserChoice(self.user_command))
         self.controller.execute(Compile(self.user_command, self.todo_list, self.controller, self.ru_controller))
@@ -58,7 +58,7 @@ class Compile:
         self.controller.execute(Compile(self.user_command, self.todo_list, self.controller, self.ru_controller))
     
     elif self.user_command.menu_status == 3:
-      self.controller.execute(ShowTodoItem(self.todo_list.todo_list[self.user_command.user_choice]))
+      self.controller.execute(ShowTodoItem(self.todo_list.get_data()[self.user_command.user_choice]))
       self.controller.execute(RequestUserCommand(self.user_command))
       if not self.user_command.user_input in ["1", "2", "3", "4"]:
         print("Invalid Input")
@@ -66,11 +66,11 @@ class Compile:
       else:
         match self.user_command.user_input:
           case "1":
-            self.ru_controller.execute(Toggle(self.todo_list.todo_list[self.user_command.user_choice]))
+            self.ru_controller.execute(Toggle(self.todo_list.get_data()[self.user_command.user_choice]))
           case "2":
-            self.ru_controller.execute(EditTodoItem(self.todo_list.todo_list[self.user_command.user_choice]))
+            self.ru_controller.execute(EditTodoItem(self.todo_list ,self.todo_list.get_data()[self.user_command.user_choice]))
           case "3":
-            self.ru_controller.execute(DeleteTodoItem(self.todo_list, self.todo_list.todo_list[self.user_command.user_choice]))
+            self.ru_controller.execute(DeleteTodoItem(self.todo_list, self.todo_list.get_data()[self.user_command.user_choice]))
           case "4":
             pass
         self.controller.execute(ToMainMenu(self.user_command))

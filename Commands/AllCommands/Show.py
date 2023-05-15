@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from Classes.TodoList import *
-from Classes.TodoItem import *
+from Classes.todo_list import *
+from Classes.todo_item import *
 
 @dataclass
 class ShowTodoList:
@@ -9,8 +9,8 @@ class ShowTodoList:
   def execute(self):
     print("\nWelcome to TaskListManager\n----------")
     print("\nCURRENT TASKS: ")
-    for key in self.todo_list.todo_list.keys():
-      print(self.todo_list.todo_list[key])
+    for key in self.todo_list.get_data().keys():
+      print(self.todo_list.get_data()[key])
 
 @dataclass
 class ShowTodoItem:
@@ -18,4 +18,4 @@ class ShowTodoItem:
 
   def execute(self):
     print("\nWelcome to TaskListManager\n----------")
-    print("\nTask Selected:\n",self.todo_item)
+    print("\nTask Selected:\n", self.todo_item)

@@ -1,5 +1,5 @@
-from dataclasses import dataclass, field
-from Commands.CommandInterface import *
+from dataclasses import dataclass
+from Commands.command_interface import *
 
 @dataclass
 class CommandController:
