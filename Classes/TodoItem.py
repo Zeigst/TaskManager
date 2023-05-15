@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 @dataclass
 class TodoItem:
@@ -23,3 +24,9 @@ class TodoItem:
 
   def setStatusUnfinished(self):
     self.status = False
+
+  def getName(self) -> str:
+    return self.name
+  
+  def getDescription(self) -> str:
+    return self.description

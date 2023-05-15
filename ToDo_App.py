@@ -1,37 +1,24 @@
 from Classes.TodoItem import *
 from Classes.TodoList import *
-from Commands.TodoListController import *
+from Commands.CommandController import *
+from Commands.RUCommandController import *
 from Commands.Compile import *
-
-# def on_ready():
-#   pass
-
-# def on_close():
-#   pass
 
 def main():
   Todo_List = TodoList()
-  controller = TodoListController()
+  controller = CommandController()
+  ru_controller = RUCommandController()
   User_Command = UserCommand()
 
   todo_item = Todo_List.createTodoItem("Task 1", "The first task")
   Todo_List.addTodoItemToList(todo_item)
-  todo_item = Todo_List.createTodoItem("Task 2", "2rd job")
+  todo_item = Todo_List.createTodoItem("Task 2", "2nd job")
   Todo_List.addTodoItemToList(todo_item)
   todo_item = Todo_List.createTodoItem("Task 3", "Final work")
   Todo_List.addTodoItemToList(todo_item)
-
-  print(todo_item.name)
   
-  #=================
-  # # VERSION 1: Command (Undo/Redo not implemented).
-  controller.execute(Compile(User_Command, Todo_List, controller))
-  #=================
-
-  #=================
-  # # VERSION 2: Command with Undo/Redo.
-
-  #=================
+  # # VERSION 2: Command (Undo/Redo implemented).
+  controller.execute(Compile(User_Command, Todo_List, controller, ru_controller))
 
 if __name__ == "__main__":
   main()

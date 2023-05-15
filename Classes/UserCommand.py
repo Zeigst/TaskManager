@@ -5,7 +5,7 @@ class UserCommand:
   user_input: str = ""
   user_choice: str = ""
   menu_status: int = 1
-  main_command_menu: str = "\nCOMMANDS:\n----------\n1. Create new task to manage\n2. Select task to edit/delete\n3. Undo\n4. Undo\n5. Redo\n6. End Program"
+  main_command_menu: str = "\nCOMMANDS:\n----------\n1. Create new task to manage\n2. Select task to edit/delete\n3. Undo\n4. Redo\n5. End Program"
   item_command_menu: str = "\nCOMMANDS:\n----------\n1. Toggle Status\n2. Edit Informations\n3. Delete\n4. Go back"
 
   def requestUserInputs(self) -> str:

@@ -1,7 +1,0 @@
-Feature:
-- Add Task
-- Edit Task
-- Toggle Task
-- Delete Task
-- Undo
-- Redo
